@@ -8,6 +8,8 @@ import Message from '../components/Message'
 import { listProductDetails } from '../actions/productActions'
 
 function ProductScreen() {
+  const [qty, setQty] = useState(1)
+
   const { id } = useParams()
   const dispatch = useDispatch()
 
@@ -19,6 +21,10 @@ function ProductScreen() {
   }, [id, dispatch])
 
   const navigate = useNavigate()
+
+  const addToCartHandler = () => {
+    navigate(`/cart/${id}?qty=${qty}`)
+  }
 
   return (
     <div>
@@ -60,6 +66,79 @@ function ProductScreen() {
                   />
                 </ListGroup.Item>
               </ListGroup>
+            </Col>
+
+            <Col md={3}>
+              <Card>
+                <ListGroup variant='flush'>
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Price:</Col>
+                      <Col>
+                        <strong>${product.price}</strong>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+
+                  <ListGroup.Item>
+                    <Row>
+                      <Col>Status:</Col>
+                      <Col>
+                        <strong>
+                          {product.count_in_stock > 0
+                            ? 'In Stock'
+                            : 'Out of Stock'}
+                        </strong>
+                      </Col>
+                    </Row>
+                  </ListGroup.Item>
+
+                  {product.count_in_stock > 0 && (
+                    <ListGroup.Item>
+                      <Row>
+                        <Col>Qty</Col>
+                        <Col xs='auto' className='my-1'>
+                          <Form.Control
+                            className='form-select form-select-override'
+                            as='select'
+                            value={qty}
+                            onChange={(e) => setQty(e.target.value)}
+                          >
+                            {[...Array(product.count_in_stock).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </Form.Control>
+                        </Col>
+                      </Row>
+                    </ListGroup.Item>
+                  )}
+
+                  <ListGroup.Item>
+                    <Button
+                      onClick={addToCartHandler}
+                      className='btn-block'
+                      disabled={product.count_in_stock === 0}
+                      type='button'
+                      style={{ width: '100%' }}
+                    >
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          height: '100%',
+                        }}
+                      >
+                        Add to Cart
+                      </div>
+                    </Button>
+                  </ListGroup.Item>
+                </ListGroup>
+              </Card>
             </Col>
           </Row>
         </div>
