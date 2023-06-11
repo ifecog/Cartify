@@ -8,7 +8,15 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework import status
 
-from base.serializers import MyTokenObtainPairSerializer
+from base.serializers import UserSerializer, MyTokenObtainPairSerializer
+
+
+@api_view(['GET'])
+def get_user_profile(request):
+    user = request.user
+    serializer = UserSerializer(user, many=False)
+
+    return Response(serializer.data)
 
 
 
