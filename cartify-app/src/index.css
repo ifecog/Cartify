@@ -19,3 +19,11 @@ h3 {
 .rating span {
   margin: 0.1rem;
 }
+
+.list-group-item-no-decoration {
+  text-decoration: none;
+}
+
+.form-select-override {
+  padding: 0.5rem 0.5rem 0.75rem 1.5rem !important;
+}
