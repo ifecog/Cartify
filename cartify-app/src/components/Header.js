@@ -1,5 +1,6 @@
 import React from 'react'
 import {Nav, Navbar, Container, NavDropdown} from 'react-bootstrap'
+import SearchBox from './SearchBox'
 
 function Header() {
   return (
@@ -33,6 +34,9 @@ function Header() {
                 </NavDropdown> */}
               </Nav>
             </Navbar.Collapse>
+            <div className='ml-auto'>
+              <SearchBox />
+            </div>
           </Container>
         </Navbar>
       </header>

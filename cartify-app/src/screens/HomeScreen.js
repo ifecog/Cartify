@@ -12,12 +12,14 @@ function HomeScreen() {
   const navigate = useNavigate()
   const location = useLocation()
 
+  let keyword = location.search
+
   const productList = useSelector((state) => state.productList)
   const {error, loading, products} = productList
 
   useEffect(() => {
-    dispatch(listProducts())
-  }, [dispatch])
+    dispatch(listProducts(keyword))
+  }, [dispatch, keyword])
 
   return (
     <div>
