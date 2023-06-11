@@ -4,6 +4,8 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, Refr
 from django.contrib.auth.models import User
 from .models import Product
 
+from typing import Dict, Any
+
 class ProductSerializer(serializers.ModelSerializer):
     
     class Meta:
@@ -15,10 +17,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs: Dict[str, Any]) -> Dict[str, str]:
         data = super().validate(attrs)
 
-        serializer = UserSerializerwithToken(self.user).data
-        for key, value in serializer.items():
-            data[key] = value
+        data['username'] = self.user.username
+        data['email'] = self.user.email
 
         return data
-        
-        
