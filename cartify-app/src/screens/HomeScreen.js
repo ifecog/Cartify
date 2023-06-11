@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {useNavigate, useLocation} from 'react-router-dom'
-import {Row, Col} from 'react-bootstrap'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate, useLocation } from 'react-router-dom'
+import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import {listProducts} from '../actions/productActions'
+import Paginate from '../components/Paginate'
+import { listProducts } from '../actions/productActions'
 
 function HomeScreen() {
   const dispatch = useDispatch()
@@ -15,7 +16,7 @@ function HomeScreen() {
   let keyword = location.search
 
   const productList = useSelector((state) => state.productList)
-  const {error, loading, products} = productList
+  const { error, loading, products, page, pages } = productList
 
   useEffect(() => {
     dispatch(listProducts(keyword))
@@ -37,6 +38,7 @@ function HomeScreen() {
               </Col>
             ))}
           </Row>
+          <Paginate page={page} pages={pages} keyword={keyword} />
         </div>
       )}
     </div>
