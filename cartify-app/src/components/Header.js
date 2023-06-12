@@ -1,8 +1,16 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
+
 import SearchBox from './SearchBox'
 
 function Header() {
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
+  const dispatch = useDispatch()
+
   return (
     <div>
       <header>
@@ -12,10 +20,12 @@ function Header() {
             <Navbar.Toggle aria-controls='basic-navbar-nav' />
             <Navbar.Collapse id='basic-navbar-nav'>
               <Nav className='me-auto'>
-                <Nav.Link href='/cart'>
-                  <i className='fas fa-shopping-cart' aria-hidden='true'></i>
-                  Cart
-                </Nav.Link>
+                <LinkContainer to='/cart'>
+                  <Nav.Link>
+                    <i className='fas fa-shopping-cart' aria-hidden='true'></i>
+                    Cart
+                  </Nav.Link>
+                </LinkContainer>
                 <Nav.Link href='/login'>
                   <i className='fa fa-user' aria-hidden='true'></i>Login
                 </Nav.Link>
