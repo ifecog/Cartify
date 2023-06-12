@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework import status
 
-from base.serializers import UserSerializer, MyTokenObtainPairSerializer
+from base.serializers import UserSerializer, MyTokenObtainPairSerializer, UserSerializerWithToken
 
 
 @api_view(['GET'])
@@ -27,6 +27,25 @@ def get_users(request):
 
     return Response(serializer.data)
 
+@api_view(['POST'])
+def register_user(request):
+    data = request.data
+
+    try:
+        user = User.objects.create_user(
+            first_name=data['first_name'],
+            last_name=data['last_name'],
+            username=data['email'],
+            email=data['email'],
+            password=make_password(data['password'])
+        )
+        serializer = UserSerializerWithToken(user, many=False)
+
+        return Response(serializer.data)
+    
+    except:
+        message = {'detail': 'user with this email already exists'}
+        return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
