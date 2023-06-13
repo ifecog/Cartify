@@ -32,15 +32,13 @@ def register_user(request):
     data = request.data
 
     try:
-        user = User.objects.create_user(
+        user = User.objects.create(
             first_name=data['first_name'],
             last_name=data['last_name'],
             username=data['email'],
             email=data['email'],
             password=make_password(data['password'])
         )
-        user.save()
-        
         serializer = UserSerializerWithToken(user, many=False)
 
         return Response(serializer.data)
@@ -50,6 +48,26 @@ def register_user(request):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_user_profile(request):
+    user = request.user
+    serializer = UserSerializerWithToken(user, many=False)
+    
+    data = request.data
+    
+    # update user registration fields
+    user.first_name = data['first_name']
+    user.last_name = data['last_name']
+    user.username = data['username']
+    user.email = data['email']
+    
+    if data['password'] != '':
+        user.password = make_password(data['password'])
+        
+    user.save()
+    
+    return Response(serializer.data)
 
 
 
