@@ -39,6 +39,8 @@ def register_user(request):
             email=data['email'],
             password=make_password(data['password'])
         )
+        user.save()
+        
         serializer = UserSerializerWithToken(user, many=False)
 
         return Response(serializer.data)

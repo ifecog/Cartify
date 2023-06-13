@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-
+import { logout } from '../actions/userActions'
 import SearchBox from './SearchBox'
 
 function Header() {
@@ -10,6 +11,12 @@ function Header() {
   const { userInfo } = userLogin
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  const logoutHandler = () => {
+    dispatch(logout())
+    navigate('/login')
+  }
 
   return (
     <div>
@@ -26,9 +33,35 @@ function Header() {
                     Cart
                   </Nav.Link>
                 </LinkContainer>
-                <Nav.Link href='/login'>
-                  <i className='fa fa-user' aria-hidden='true'></i>Login
-                </Nav.Link>
+                {userInfo ? (
+                  <NavDropdown title={userInfo.name} id='username'>
+                    <LinkContainer to='/profile'>
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                ) : (
+                  <LinkContainer to='/login'>
+                    <Nav.Link>SignIn</Nav.Link>
+                  </LinkContainer>
+                )}
+
+                {userInfo && userInfo.isAdmin && (
+                  <NavDropdown title='Admin' id='adminmenu'>
+                    <LinkContainer to='/admin/userlist'>
+                      <NavDropdown.Item>Users</NavDropdown.Item>
+                    </LinkContainer>
+                    <LinkContainer to='/admin/productlist'>
+                      <NavDropdown.Item>Products</NavDropdown.Item>
+                    </LinkContainer>
+
+                    <LinkContainer to='/admin/orderlist'>
+                      <NavDropdown.Item>Orders</NavDropdown.Item>
+                    </LinkContainer>
+                  </NavDropdown>
+                )}
                 {/* <NavDropdown title='Dropdown' id='basic-nav-dropdown'>
                   <NavDropdown.Item href='#action/3.1'>Action</NavDropdown.Item>
                   <NavDropdown.Item href='#action/3.2'>
