@@ -9,6 +9,7 @@ from base.views.user_views import (
     register_user,
     MyTokenObtainPairView,
     get_user_profile,
+    update_user_profile,
 )
 
 class TestProductUrls(SimpleTestCase):
@@ -39,4 +40,8 @@ class TestUserUrls(SimpleTestCase):
     def test_user_profile_url_is_resolved(self):
         url = reverse('user-profile')
         self.assertEquals(resolve(url).func, get_user_profile)
+        
+    def test_update_user_profile_is_resolved(self):
+        url = reverse('update-profile')
+        self.assertEquals(resolve(url).func, update_user_profile)
 
