@@ -50,5 +50,8 @@ def register_user(request):
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
 
+
+
+
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
