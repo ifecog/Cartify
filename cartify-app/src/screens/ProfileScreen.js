@@ -41,7 +41,12 @@ function ProfileScreen() {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    console.log('submit')
+
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match')
+    } else {
+      console.log('hey!')
+    }
   }
 
   return (
