@@ -1,10 +1,10 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from rest_framework import status
-
 from base.models import (
     Product,
 )
+from django.contrib.auth.models import User
 
 class TestProductViews(TestCase):
     
@@ -30,3 +30,13 @@ class TestProductViews(TestCase):
         
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['name'], 'Sample Product')
+
+# class TestUserViews(TestCase):
+    
+#     def setUp(self):
+#         self.client = Client()
+#         self.users_url = reverse('users')
+               
+#     def test_get_users_GET(self):
+#         response = self.client.get(self.users_url)
+#         self.assertEqual(response.status_code, status.HTTP_200_OK)
