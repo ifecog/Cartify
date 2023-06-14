@@ -42,7 +42,7 @@ function ProfileScreen() {
         setEmail(user.email)
       }
     }
-  }, [navigate, userInfo, user, success, dispatch])
+  }, [navigate, userInfo, user, dispatch, success])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -60,6 +60,7 @@ function ProfileScreen() {
         })
       )
     }
+    navigate('/')
   }
 
   return (
