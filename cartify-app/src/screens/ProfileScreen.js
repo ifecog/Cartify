@@ -8,6 +8,7 @@ import FormContainer from '../components/FormContainer'
 import Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
+import { listMyOrders } from '../actions/orderActions'
 
 function ProfileScreen() {
   const [firstName, setFirstName] = useState('')
@@ -29,6 +30,9 @@ function ProfileScreen() {
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
   const { success } = userUpdateProfile
 
+  const orderListMy = useSelector((state) => state.orderListMy)
+  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
+
   useEffect(() => {
     if (!userInfo) {
       navigate('/login')
@@ -36,6 +40,7 @@ function ProfileScreen() {
       if (!user || !user.name || success || userInfo._id !== user._id) {
         dispatch({ type: USER_UPDATE_PROFILE_RESET })
         dispatch(getUserDetails('profile'))
+        dispatch(listMyOrders())
       } else {
         setFirstName(user.first_name)
         setLastName(user.last_name)
@@ -129,6 +134,50 @@ function ProfileScreen() {
             Update
           </Button>
         </Form>
+      </Col>
+
+      <Col md={9}>
+        <h2>My Orders</h2>
+        {loadingOrders ? (
+          <Loader />
+        ) : errorOrders ? (
+          <Message variant='danger'>{errorOrders}</Message>
+        ) : (
+          <Table striped responsive className='table-sm'>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Total($)</th>
+                <th>Paid</th>
+                <th>Delivered</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {orders.map((order) => (
+                <tr key={order._id}>
+                  <td>{order._id}</td>
+                  <td>{order.created_time.substring(0, 10)}</td>
+                  <td>{order.total_price}</td>
+                  <td>
+                    {order.is_paid ? (
+                      order.payment_time.substring(0, 10)
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }}></i>
+                    )}
+                  </td>
+                  <td>
+                    <LinkContainer to={`/order/${order._id}`}>
+                      <Button className='btn-bt'>Details</Button>
+                    </LinkContainer>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
       </Col>
     </Row>
   )
