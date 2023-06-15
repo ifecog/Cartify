@@ -69,6 +69,12 @@ def update_user_profile(request):
     
     return Response(serializer.data)
 
+@api_view(['DELETE'])
+@permission_classes([IsAdminUser])
+def delete_user(request, pk):
+    user = User.objects.get(id=pk)
+    user.delete()
+    return Response('User Deleted!')
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
