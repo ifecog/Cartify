@@ -242,8 +242,8 @@ function OrderScreen() {
             {loadingDelivery && <Loader />}
             {userInfo &&
               userInfo.isAdmin &&
-              order.isPaid &&
-              !order.isDelivered && (
+              order.is_paid &&
+              !order.is_delivered && (
                 <ListGroup.Item>
                   <Button
                     type='button'
