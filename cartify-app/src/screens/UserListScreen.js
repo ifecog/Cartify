@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react"
-import { useNavigate, useLocation } from "react-router-dom"
-import { LinkContainer } from "react-router-bootstrap"
-import { Table, Button } from "react-bootstrap"
-import { useDispatch, useSelector } from "react-redux"
-import Message from "../components/Message"
-import Loader from "../components/Loader"
-import { listUsers, deleteUser } from "../actions/userActions"
+import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { LinkContainer } from 'react-router-bootstrap'
+import { Table, Button } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import { listUsers, deleteUser } from '../actions/userActions'
 
 function UserListScreen() {
   const dispatch = useDispatch()
@@ -24,12 +24,12 @@ function UserListScreen() {
     if (userInfo && userInfo.isAdmin) {
       dispatch(listUsers())
     } else {
-      navigate("/login")
+      navigate('/login')
     }
   }, [dispatch, userInfo, successDelete, navigate])
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you sure you want to delete this user?")) {
+    if (window.confirm('Are you sure you want to delete this user?')) {
       dispatch(deleteUser(id))
     }
   }
@@ -61,9 +61,9 @@ function UserListScreen() {
                 <td>{user.email}</td>
                 <td>
                   {user.isAdmin ? (
-                    <i className='fas fa-check' style={{ color: "green" }}></i>
+                    <i className='fas fa-check' style={{ color: 'green' }}></i>
                   ) : (
-                    <i className='fas fa-check' style={{ color: "red" }}></i>
+                    <i className='fas fa-check' style={{ color: 'red' }}></i>
                   )}
                 </td>
                 <td>
