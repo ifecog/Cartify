@@ -129,7 +129,7 @@ function OrderScreen() {
                   '.'}
               </p>
 
-              {order.isDelivered ? (
+              {order.is_delivered ? (
                 <Message variant='success'>
                   Delivery Date: {order.delivery_time}
                 </Message>
