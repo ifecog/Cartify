@@ -46,7 +46,7 @@ function OrderScreen() {
     const script = document.createElement('script')
     script.type = 'text/javascript'
     script.src =
-      'https://www.paypal.com/sdk/js?client-id=AUxYt69t0y7JWpqB8er3OucnaRbo0_lqx4Q3U6xZ-rdg-VY6cgAwM-JLCf3wL4CLjNRZbRgs_a5mwZeD'
+      'https://www.paypal.com/sdk/js?client-id=Aayw5Tw5cyltDdhr9ZuNzUPPY0Affp3D1EUHoWXSJiJmD9Sq7OuIxYEEwWqWkNXx_8lMwqVVYMjoVgmo'
     script.async = true
     script.onload = () => {
       setSdkReady(true)
@@ -123,7 +123,7 @@ function OrderScreen() {
                   ', ' +
                   order.shippingAddress.city +
                   ' ' +
-                  order.shippingAddress.postalCode +
+                  order.shippingAddress.postal_code +
                   ', ' +
                   order.shippingAddress.country +
                   '.'}
@@ -131,7 +131,7 @@ function OrderScreen() {
 
               {order.isDelivered ? (
                 <Message variant='success'>
-                  Delivery Date: {order.deliveryTime}
+                  Delivery Date: {order.delivery_time}
                 </Message>
               ) : (
                 <Message variant='warning'>Pending Delivery</Message>
@@ -140,11 +140,11 @@ function OrderScreen() {
 
             <ListGroup.Item>
               <h2>Payment</h2>
-              <p>Option: {order.paymentMethod}</p>
+              <p>Option: {order.payment_method}</p>
 
-              {order.isPaid ? (
+              {order.is_paid ? (
                 <Message variant='success'>
-                  Payment Date: {order.paymentTime}
+                  Payment Date: {order.payment_time}
                 </Message>
               ) : (
                 <Message variant='warning'>Pending Payment</Message>
@@ -207,23 +207,23 @@ function OrderScreen() {
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping: </Col>
-                  <Col md={4}>${order.shippingPrice}</Col>
+                  <Col md={4}>${order.shipping_price}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax: </Col>
-                  <Col md={4}>${order.taxPrice}</Col>
+                  <Col md={4}>${order.tax_price}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total: </Col>
-                  <Col md={4}>${order.totalPrice}</Col>
+                  <Col md={4}>${order.total_price}</Col>
                 </Row>
               </ListGroup.Item>
 
-              {!order.isPaid && (
+              {!order.is_paid && (
                 <ListGroup.Item>
                   {loadingPay && <Loader />}
 
@@ -231,7 +231,7 @@ function OrderScreen() {
                     <Loader />
                   ) : (
                     <PayPalButton
-                      amount={order.totalPrice}
+                      amount={order.total_price}
                       onSuccess={successPaymentHandler}
                     />
                   )}
