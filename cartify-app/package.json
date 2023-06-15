@@ -1,6 +1,6 @@
 {
   "name": "cartify-app",
-  "proxy": "http://127.0.0.1:8000",
+  "proxy": "https://cartifyi.onrender.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
