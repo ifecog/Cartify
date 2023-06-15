@@ -26,8 +26,8 @@ function ProductEditScreen() {
 
   const productId = id
 
-  const productDetail = useSelector((state) => state.productDetail)
-  const { error, loading, product } = productDetail
+  const productDetails = useSelector((state) => state.productDetails)
+  const { error, loading, product } = productDetails
 
   const productUpdate = useSelector((state) => state.productUpdate)
   const {

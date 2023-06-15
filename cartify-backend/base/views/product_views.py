@@ -53,6 +53,17 @@ def get_product_details(request, pk):
     
     return Response(serializer.data)
 
+@api_view(['POST'])
+def upload_image(request):
+    data = request.data
+    
+    product_id = data['product_id']
+    product = Product.objects.get(_id=product_id)
+    
+    product.image = request.FILES.get('image')
+    product.save()
+    
+    return Response('Image was successfully uploaded!')
 
 
 @api_view(['POST'])
