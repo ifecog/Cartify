@@ -81,3 +81,14 @@ def get_order_by_id(request, pk):
     except :
         message = {'detail': 'Order does not exist'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['PUT'])
+@permission_classes([IsAuthenticated])
+def update_order_to_paid(request, pk):
+    order = Order.objects.get(_id=pk)
+
+    order.is_paid = True
+    order.payment_time = datetime.now()
+    order.save()
+
+    return Response('Order was paid for')
