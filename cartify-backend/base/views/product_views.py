@@ -54,6 +54,7 @@ def get_product_details(request, pk):
     return Response(serializer.data)
 
 
+
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def create_product_review(request, pk):
