@@ -197,8 +197,7 @@ STORAGES = {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage"
     },
     "staticfiles": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-        "LOCATION": STATIC_ROOT,
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
