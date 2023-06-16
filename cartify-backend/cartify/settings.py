@@ -189,7 +189,18 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = 'static/images'
 
-STORAGES = {"default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}}
+# STORAGES = {"default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}}
+
+
+STORAGES = {
+    "default": {
+        "BACKEND": "storages.backends.s3boto3.S3Boto3Storage"
+    },
+    "staticfiles": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+        "LOCATION": os.path.join(BASE_DIR, "staticfiles"),
+    },
+}
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default='mydefaultvalue')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default='mydefaultvalue')
