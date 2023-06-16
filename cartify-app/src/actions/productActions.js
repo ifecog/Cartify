@@ -38,7 +38,7 @@ export const listProducts =
         type: PRODUCT_LIST_REQUEST,
       })
 
-      const { data } = await axios.get(`/api/products/${keyword}`)
+      const { data } = await axios.get(`https://cartifyi.onrender.com/api/products/${keyword}`)
 
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
@@ -61,7 +61,7 @@ export const listTopRatedProducts = () => async (dispatch) => {
       type: PRODUCT_TOP_RATED_REQUEST,
     })
 
-    const { data } = await axios.get('/api/products/top_products/')
+    const { data } = await axios.get('https://cartifyi.onrender.com/api/products/top_products/')
 
     dispatch({
       type: PRODUCT_TOP_RATED_SUCCESS,
@@ -84,7 +84,7 @@ export const listProductDetails = (id) => async (dispatch) => {
       type: PRODUCT_DETAILS_REQUEST,
     })
 
-    const { data } = await axios.get(`/api/products/${id}`)
+    const { data } = await axios.get(`https://cartifyi.onrender.com/api/products/${id}`)
 
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
@@ -120,7 +120,7 @@ export const createProductReview =
       }
 
       const { data } = await axios.post(
-        `/api/products/${productId}/reviews/`,
+        `https://cartifyi.onrender.com/api/products/${productId}/reviews/`,
         review,
         config
       )
@@ -157,7 +157,7 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post(`/api/products/create/`, {}, config)
+    const { data } = await axios.post(`https://cartifyi.onrender.com/api/products/create/`, {}, config)
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -192,7 +192,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `/api/products/update/${product._id}/`,
+      `https://cartifyi.onrender.com/api/products/update/${product._id}/`,
       product,
       config
     )
@@ -234,7 +234,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.delete(`/api/products/delete/${id}`, config)
+    const { data } = await axios.delete(`https://cartifyi.onrender.com/api/products/delete/${id}`, config)
 
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,

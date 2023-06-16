@@ -88,7 +88,7 @@ function ProductEditScreen() {
       }
 
       const { data } = await axios.post(
-        '/api/products/image-upload/',
+        'https://cartifyi.onrender.com/api/products/image-upload/',
         formData,
         config
       )
