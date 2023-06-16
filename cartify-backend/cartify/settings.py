@@ -202,8 +202,8 @@ STORAGES = {
 }
 
 AWS_QUERYSTRING_AUTH = False
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default='mydefaultvalue')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default='mydefaultvalue')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default='AKIA3X2RNQ7J323VEOGV')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default='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')
 AWS_STORAGE_BUCKET_NAME = 'cartifyi-bucket'
 
 
