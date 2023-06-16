@@ -198,10 +198,11 @@ STORAGES = {
     },
     "staticfiles": {
         "BACKEND": "django.core.files.storage.FileSystemStorage",
-        "LOCATION": os.path.join(BASE_DIR, "staticfiles"),
+        "LOCATION": STATIC_ROOT,
     },
 }
 
+AWS_QUERYSTRING_AUTH = False
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default='mydefaultvalue')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default='mydefaultvalue')
 AWS_STORAGE_BUCKET_NAME = 'cartifyi-bucket'
