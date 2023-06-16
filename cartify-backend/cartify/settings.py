@@ -191,8 +191,8 @@ MEDIA_ROOT = 'static/images'
 
 STORAGES = {"default": {"BACKEND": "storages.backends.s3boto3.S3Boto3Storage"}}
 
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID', default='mydefaultvalue')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY', default='mydefaultvalue')
 AWS_STORAGE_BUCKET_NAME = 'cartifyi-bucket'
 
 
