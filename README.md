@@ -27,6 +27,8 @@ Cartify comes with a range of powerful features to support your e-commerce store
 - **PostgreSQL Database:** Utilize a robust PostgreSQL database for data storage and retrieval.
 - **API Communication:** Communicate with the backend API using Axios to perform CRUD operations on products, carts, and orders.
 - **Responsive UI:** Build a responsive user interface using React and React-Redux for an optimal shopping experience.
+- **AWS RDS:** Utilize Amazon RDS as the managed PostgreSQL database for secure and scalable data storage.
+- **JWT Token Authentication:** Implement JSON Web Token (JWT) authentication using Django REST Framework for secure user authorization and access control.
 
 ## Technologies Used
 
