@@ -87,6 +87,9 @@ To install and set up Cartify on your local machine, follow these steps:
    ```shell
    npm install
    ```
+   ```shell
+   npx create-react-app react-app
+   ```
 
 7. Create a `.env` file in the project's root directory and provide the necessary environment variables. The required variables include database settings, AWS S3 credentials, and secret keys.
 
