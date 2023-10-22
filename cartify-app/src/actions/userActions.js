@@ -45,7 +45,7 @@ export const login = (email, password) => async (dispatch) => {
     }
 
     const { data } = await axios.post(
-      'https://cartifyi.onrender.com/api/users/login/',
+      'https://cartify.up.railway.app/api/users/login/',
       { username: email, password: password },
       config
     )
@@ -87,7 +87,7 @@ export const register =
       }
 
       const { data } = await axios.post(
-        'https://cartifyi.onrender.com/api/users/register/',
+        'https://cartify.up.railway.app/api/users/register/',
         {
           first_name: firstName,
           last_name: lastName,
@@ -136,7 +136,10 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`https://cartifyi.onrender.com/api/users/${id}/`, config)
+    const { data } = await axios.get(
+      `https://cartify.up.railway.app/api/users/${id}/`,
+      config
+    )
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
@@ -170,7 +173,11 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put('https://cartifyi.onrender.com/api/users/profile/update/', user, config)
+    const { data } = await axios.put(
+      'https://cartify.up.railway.app/api/users/profile/update/',
+      user,
+      config
+    )
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
@@ -211,7 +218,10 @@ export const listUsers = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get('https://cartifyi.onrender.com/api/users/', config)
+    const { data } = await axios.get(
+      'https://cartify.up.railway.app/api/users/',
+      config
+    )
 
     dispatch({
       type: USER_LIST_SUCCESS,
@@ -245,7 +255,10 @@ export const deleteUser = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.delete(`https://cartifyi.onrender.com/api/users/delete/${id}/`, config)
+    const { data } = await axios.delete(
+      `https://cartify.up.railway.app/api/users/delete/${id}/`,
+      config
+    )
 
     dispatch({
       type: USER_DELETE_SUCCESS,
@@ -280,7 +293,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://cartifyi.onrender.com/api/users/update/${user._id}/`,
+      `https://cartify.up.railway.app/api/users/update/${user._id}/`,
       user,
       config
     )

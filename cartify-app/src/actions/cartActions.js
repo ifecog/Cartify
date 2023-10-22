@@ -8,7 +8,7 @@ import {
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(
-    `https://cartifyi.onrender.com/api/products/${id}`
+    `https://cartify.up.railway.app/api/products/${id}`
   )
 
   dispatch({

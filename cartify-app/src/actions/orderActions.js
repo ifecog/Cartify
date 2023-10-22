@@ -44,7 +44,11 @@ export const createOrder = (order) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.post('https://cartifyi.onrender.com/api/orders/add/', order, config)
+    const { data } = await axios.post(
+      'https://cartify.up.railway.app/api/orders/add/',
+      order,
+      config
+    )
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -85,7 +89,10 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`https://cartifyi.onrender.com/api/orders/${id}/`, config)
+    const { data } = await axios.get(
+      `https://cartify.up.railway.app/api/orders/${id}/`,
+      config
+    )
 
     dispatch({
       type: ORDER_DETAILS_SUCCESS,
@@ -120,7 +127,7 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://cartifyi.onrender.com/api/orders/${id}/pay/`,
+      `https://cartify.up.railway.app/api/orders/${id}/pay/`,
       paymentResult,
       config
     )
@@ -158,7 +165,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://cartifyi.onrender.com/api/orders/${order._id}/deliver/`,
+      `https://cartify.up.railway.app/api/orders/${order._id}/deliver/`,
       {},
       config
     )
@@ -195,7 +202,10 @@ export const listMyOrders = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`https://cartifyi.onrender.com/api/orders/myorders/`, config)
+    const { data } = await axios.get(
+      `https://cartify.up.railway.app/api/orders/myorders/`,
+      config
+    )
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,
@@ -229,7 +239,10 @@ export const listOrders = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`https://cartifyi.onrender.com/api/orders/`, config)
+    const { data } = await axios.get(
+      `https://cartify.up.railway.app/api/orders/`,
+      config
+    )
 
     dispatch({
       type: ORDER_LIST_SUCCESS,
