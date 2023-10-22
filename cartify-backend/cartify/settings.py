@@ -140,9 +140,21 @@ WSGI_APPLICATION = 'cartify.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': dj_database_url.parse(config('DATABASE_URL'))
+# }
+
 DATABASES = {
-    'default': dj_database_url.parse(config('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'U75nDWxDjeaX4Urb5Gus',
+        'HOST': 'containers-us-west-106.railway.app',
+        'PORT': '6370',
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
