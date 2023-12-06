@@ -8,7 +8,7 @@ import {
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(
-    `https://cartify.up.railway.app/api/products/${id}`
+    `https://shopzonapi.up.railway.app/api/products/${id}`
   )
 
   dispatch({
