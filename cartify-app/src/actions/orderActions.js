@@ -45,7 +45,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.post(
-      'https://cartify.up.railway.app/api/orders/add/',
+      'https://shopzonapi.up.railway.app/api/orders/add/',
       order,
       config
     )
@@ -90,7 +90,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get(
-      `https://cartify.up.railway.app/api/orders/${id}/`,
+      `https://shopzonapi.up.railway.app/api/orders/${id}/`,
       config
     )
 
@@ -127,7 +127,7 @@ export const payOrder = (id, paymentResult) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://cartify.up.railway.app/api/orders/${id}/pay/`,
+      `https://shopzonapi.up.railway.app/api/orders/${id}/payment/`,
       paymentResult,
       config
     )
@@ -165,7 +165,7 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://cartify.up.railway.app/api/orders/${order._id}/deliver/`,
+      `https://shopzonapi.up.railway.app/api/orders/${order._id}/delivery/`,
       {},
       config
     )
@@ -203,7 +203,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get(
-      `https://cartify.up.railway.app/api/orders/myorders/`,
+      `https://shopzonapi.up.railway.app/api/orders/myorders/`,
       config
     )
 
@@ -240,7 +240,7 @@ export const listOrders = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get(
-      `https://cartify.up.railway.app/api/orders/`,
+      `https://shopzonapi.up.railway.app/api/orders/`,
       config
     )
 
