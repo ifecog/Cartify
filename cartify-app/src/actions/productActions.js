@@ -202,7 +202,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://shopzonapi.up.railway.app/api/products/update/${product._id}/`,
+      `https://shopzonapi.up.railway.app/api/products/${product._id}/update/`,
       product,
       config
     )
@@ -245,7 +245,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.delete(
-      `https://shopzonapi.up.railway.app/api/products/delete/${id}`,
+      `https://shopzonapi.up.railway.app/api/products/${id}/delete/`,
       config
     )
 

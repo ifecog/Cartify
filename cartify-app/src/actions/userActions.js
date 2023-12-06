@@ -45,7 +45,7 @@ export const login = (email, password) => async (dispatch) => {
     }
 
     const { data } = await axios.post(
-      'https://cartify.up.railway.app/api/users/login/',
+      'https://shopzonapi.up.railway.app/api/users/login/',
       { username: email, password: password },
       config
     )
@@ -87,7 +87,7 @@ export const register =
       }
 
       const { data } = await axios.post(
-        'https://cartify.up.railway.app/api/users/register/',
+        'https://shopzonapi.up.railway.app/api/users/register/',
         {
           first_name: firstName,
           last_name: lastName,
@@ -137,7 +137,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get(
-      `https://cartify.up.railway.app/api/users/${id}/`,
+      `https://shopzonapi.up.railway.app/api/users/${id}/`,
       config
     )
 
@@ -174,7 +174,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      'https://cartify.up.railway.app/api/users/profile/update/',
+      'https://shopzonapi.up.railway.app/api/users/profile/update/',
       user,
       config
     )
@@ -219,7 +219,7 @@ export const listUsers = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get(
-      'https://cartify.up.railway.app/api/users/',
+      'https://shopzonapi.up.railway.app/api/users/',
       config
     )
 
@@ -256,7 +256,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.delete(
-      `https://cartify.up.railway.app/api/users/delete/${id}/`,
+      `https://shopzonapi.up.railway.app/api/users/delete/${id}/`,
       config
     )
 
@@ -293,7 +293,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://cartify.up.railway.app/api/users/update/${user._id}/`,
+      `https://shopzonapi.up.railway.app/api/users/update/${user._id}/`,
       user,
       config
     )
