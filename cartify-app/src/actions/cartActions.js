@@ -10,6 +10,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(
     `https://shopzonapi.up.railway.app/api/products/${id}`
   )
+  // made changes here
 
   dispatch({
     type: CART_ADD_ITEM,
