@@ -1,5 +1,5 @@
 # Cartify
-The Cartify Ecommerce Application is built using React for the front-end, Django for the back-end/REST API (https://cartify.up.railway.app/api/schema/docs/), and PostgreSQL for the database. The app allows users to browse products, add them to a cart, and complete transactions securely. It includes features like user authentication, order management, and product reviews.
+The Cartify Ecommerce Application is built using React for the front-end, Django for the back-end/REST API, and PostgreSQL for the database. The app allows users to browse products, add them to a cart, and complete transactions securely. It includes features like user authentication, order management, and product reviews.
 # Cartify - Full Stack E-commerce Application
 
 Cartify is a full-stack e-commerce application developed using Django, Django REST, React, React-Redux, AWS S3 Bucket, PostgreSQL, and Axios. It provides a comprehensive platform for building and managing online stores with features such as product listing, shopping cart functionality, user authentication, and order processing.
