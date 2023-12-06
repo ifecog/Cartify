@@ -39,7 +39,7 @@ export const listProducts =
       })
 
       const { data } = await axios.get(
-        `https://cartify.up.railway.app/api/products/${keyword}`
+        `https://shopzonapi.up.railway.app/api/products/${keyword}`
       )
 
       dispatch({
@@ -64,7 +64,7 @@ export const listTopRatedProducts = () => async (dispatch) => {
     })
 
     const { data } = await axios.get(
-      'https://cartify.up.railway.app/api/products/top_products/'
+      'https://shopzonapi.up.railway.app/api/products/top_products/'
     )
 
     dispatch({
@@ -89,7 +89,7 @@ export const listProductDetails = (id) => async (dispatch) => {
     })
 
     const { data } = await axios.get(
-      `https://cartify.up.railway.app/api/products/${id}`
+      `https://shopzonapi.up.railway.app/api/products/${id}`
     )
 
     dispatch({
@@ -126,7 +126,7 @@ export const createProductReview =
       }
 
       const { data } = await axios.post(
-        `https://cartify.up.railway.app/api/products/${productId}/reviews/`,
+        `https://shopzonapi.up.railway.app/api/products/${productId}/reviews/`,
         review,
         config
       )
@@ -202,7 +202,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.put(
-      `https://cartify.up.railway.app/api/products/update/${product._id}/`,
+      `https://shopzonapi.up.railway.app/api/products/update/${product._id}/`,
       product,
       config
     )
@@ -245,7 +245,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     }
 
     const { data } = await axios.delete(
-      `https://cartify.up.railway.app/api/products/delete/${id}`,
+      `https://shopzonapi.up.railway.app/api/products/delete/${id}`,
       config
     )
 
